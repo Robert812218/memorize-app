@@ -2,7 +2,7 @@ use leptos::*;
 use leptos_meta::*;
 use leptos_router::*;
 
-
+mod linux;
 
 #[component]
 pub fn App(cx: Scope) -> impl IntoView {
@@ -25,9 +25,9 @@ pub fn App(cx: Scope) -> impl IntoView {
             <main>
                 <Routes>
                     	<Route path="" view=|cx| view! { cx, <HomePage/> }/>
-		    	<Route path="/test" view=|cx| view! { cx, <TestPage/> }/>
-			<Route path="/linux" view=|cx| view! { cx, <LinuxPage /> }/>
-			<Route path="/vim" view=|cx| view! { cx, <VimPage/> }/>
+		    	        <Route path="/test" view=|cx| view! { cx, <TestPage/> }/>
+			            <Route path="/linux" view=|cx| view! { cx, <LinuxPage /> }/>
+			            <Route path="/vim" view=|cx| view! { cx, <VimPage/> }/>
                 </Routes>
             </main>
         </Router>
@@ -54,7 +54,8 @@ pub fn LinuxPage(cx: Scope) -> impl IntoView {
 	view! {
 		cx,
 		<div>
-			<h1>"Linux Stuff"</h1>
+			linux::Linux();
+
 		</div>
 	}
 }
