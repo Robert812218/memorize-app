@@ -2,6 +2,8 @@ use leptos::*;
 use leptos_meta::*;
 use leptos_router::*;
 
+
+
 #[component]
 pub fn App(cx: Scope) -> impl IntoView {
     // Provides context that manages stylesheets, titles, meta tags, etc.
@@ -10,6 +12,7 @@ pub fn App(cx: Scope) -> impl IntoView {
     view! {
         cx,
 
+	<Meta name="color-scheme" content="dark"/>
         // injects a stylesheet into the document <head>
         // id=leptos means cargo-leptos will hot-reload this stylesheet
         <Stylesheet id="leptos" href="/pkg/leptos_start.css"/>
@@ -21,12 +24,17 @@ pub fn App(cx: Scope) -> impl IntoView {
         <Router>
             <main>
                 <Routes>
-                    <Route path="" view=|cx| view! { cx, <HomePage/> }/>
+                    	<Route path="" view=|cx| view! { cx, <HomePage/> }/>
+		    	<Route path="/test" view=|cx| view! { cx, <TestPage/> }/>
+			<Route path="/linux" view=|cx| view! { cx, <LinuxPage /> }/>
+			<Route path="/vim" view=|cx| view! { cx, <VimPage/> }/>
                 </Routes>
             </main>
         </Router>
     }
 }
+
+
 
 /// Renders the home page of your application.
 #[component]
@@ -36,7 +44,41 @@ fn HomePage(cx: Scope) -> impl IntoView {
     let on_click = move |_| set_count.update(|count| *count += 1);
 
     view! { cx,
-        <h1>"Welcome to Leptos!"</h1>
+        <h1>"New Game"</h1>
         <button on:click=on_click>"Click Me: " {count}</button>
     }
+}
+
+#[component]
+pub fn LinuxPage(cx: Scope) -> impl IntoView {
+	view! {
+		cx,
+		<div>
+			<h1>"Linux Stuff"</h1>
+		</div>
+	}
+}
+
+
+#[component]
+pub fn VimPage(cx: Scope) -> impl IntoView {
+	view! {cx,
+		<div>
+			<h1>"Vim Stuff"</h1>
+		</div>
+	}
+}
+
+
+#[component]
+pub fn TestPage(cx: Scope) -> impl IntoView {
+	view! { 
+		cx,
+		<div>
+			<h1>"Test Page"</h1>
+	        	<h2>"nonono"</h2>
+			
+		</div>
+		
+	}
 }
