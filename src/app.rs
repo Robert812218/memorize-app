@@ -2,7 +2,7 @@ use leptos::*;
 use leptos_meta::*;
 use leptos_router::*;
 
-mod linux;
+pub mod linux;
 
 #[component]
 pub fn App(cx: Scope) -> impl IntoView {
@@ -54,11 +54,13 @@ pub fn LinuxPage(cx: Scope) -> impl IntoView {
 	view! {
 		cx,
 		<div>
-			linux::Linux();
+			// linux::Linux();
 
 		</div>
 	}
 }
+
+
 
 
 #[component]
